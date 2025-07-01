@@ -1,0 +1,380 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f7f7;
+  color: #2d3748;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Franjas laterales fijas mínimo 240px, crecen en pantallas grandes */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: clamp(240px, 15vw, 400px); /* mínimo 240px, crece hasta 400px */
+  background: linear-gradient(to bottom, #b2dfdb, #80cbc4);
+  z-index: 0;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+/* Contenido encima */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/* Contenedor principal */
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+/* Tarjetas */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(44, 122, 123, 0.15);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(44, 122, 123, 0.25);
+}
+
+/* Título centrado y decorativo */
+.card h3, .card h4 {
+  text-align: center;
+  color: #2c7a7b;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Inputs y textarea en .card */
+.card input,
+.card textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.card input:focus,
+.card textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* Inputs y textarea */
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+  border-color: #38a69d;
+  box-shadow: 0 0 8px rgba(56, 166, 157, 0.5);
+}
+
+/* Botones generales */
+button {
+  background-color: #2c7a7b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover:not(:disabled) {
+  background-color: #285e61;
+}
+
+button:disabled {
+  background-color: #a0b7b7;
+  cursor: not-allowed;
+}
+
+/* Mensajes de éxito y error */
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.message.success {
+  background-color: #e6f4ea;
+  color: #2f855a;
+  border: 1px solid #81c784;
+}
+
+.message.error {
+  background-color: #fce4e4;
+  color: #e53e3e;
+  border: 1px solid #f56565;
+}
+
+/* Contenedor para votantes: flex para columnas */
+.votantes-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.votantes-section {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(44, 122, 123, 0.1);
+}
+
+.votantes-section h4 {
+  color: #2c7a7b;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Inputs y textarea en .votantes-section */
+.votantes-section input,
+.votantes-section textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.votantes-section input:focus,
+.votantes-section textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* Detalles de votación: más moderno */
+.detalles-votacion {
+  background: linear-gradient(135deg, #38a69d, #2c7a7b);
+  color: white;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px rgba(56, 166, 157, 0.4);
+  text-align: center;
+  position: relative;
+}
+
+.detalles-votacion h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 0.7rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.detalles-votacion p {
+  font-size: 1.1rem;
+  margin: 0.3rem 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Cuadro ganador */
+.ganador-card {
+  background-color: #e6f4ea;
+  border: 1px solid #81c784;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.15);
+}
+
+.ganador-card h4 {
+  text-align: center;
+  color: #2f855a;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+}
+
+.btn-lg {
+  padding: 1.25rem 2rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+/* Botón Finalizar (rojo) */
+.btn-finalizar {
+  background-color: #e74c3c;
+}
+
+.btn-finalizar:hover:not(:disabled) {
+  background-color: #c0392b;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
+}
+
+/* Botón Ganador (verde) */
+.btn-ganador {
+  background-color: #2ecc71;
+}
+
+.btn-ganador:hover:not(:disabled) {
+  background-color: #27ae60;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.5);
+}
+
+/* Responsive: en pantallas muy pequeñas apilar columnas */
+@media (max-width: 700px) {
+  .votantes-container {
+    flex-direction: column;
+  }
+}
+
+/* -------------------------------------------------------- PÁGINA VOTACIONESDEADMINISTRADOR.JS -------------------------------------------------------- */
+/* Contenedor principal, centrado y con padding */
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #34495e;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #c0392b;
+  background-color: #fce4e4;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #e57373;
+}
+
+/* Lista de votaciones */
+.votaciones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tarjetas de cada votación */
+.votacion-card {
+  border: 1px solid #1abc9c;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  background-color: #e0f7f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(26, 188, 156, 0.3);
+}
+
+.votacion-card:hover {
+  background-color: #a1ded9;
+  box-shadow: 0 6px 15px rgba(26, 188, 156, 0.6);
+}
+
+.votacion-card h3 {
+  margin: 0 0 0.4rem 0;
+  color: #117a71;
+  font-weight: 700;
+}
+
+.votacion-card p {
+  margin: 0;
+  color: #2c3e50cc;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* -------------------------------------------------------- PÁGINA CREARVOTACION.JS -------------------------------------------------------- */
